@@ -93,7 +93,7 @@ const heatGlobeMaterial = new THREE.ShaderMaterial({
 });
 
 const heatGlobe = new THREE.Mesh(heatGlobeGeometry, heatGlobeMaterial);
-heatGlobe.scale.set(1.1, 1.1, 1.1);
+heatGlobe.scale.set(1, 1, 1);
 heatGlobe.position.y = 0.4;
 heatGlobe.position.x = 2;
 heatGlobeGroup.add(heatGlobe);

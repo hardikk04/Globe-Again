@@ -175,7 +175,7 @@ const page1Canvas = () => {
     page1Tl.to(".scroll-down", {
       opacity: 0,
     });
-    
+
     page1Tl.from(
       ".page1-para1-line1>h3>div",
       {
@@ -260,6 +260,33 @@ const page1Canvas = () => {
     );
 
     page1Tl.to(
+      ".page1-main-line1>h1>div",
+      {
+        y: 60,
+        opacity: 0,
+        stagger: {
+          amount: -1,
+        },
+        onComplete: () => {
+          // document.querySelector(".v1").play();
+        },
+      },
+      "main"
+    );
+
+    page1Tl.to(
+      ".page1-main-line2>h1>div",
+      {
+        y: 60,
+        opacity: 0,
+        stagger: {
+          amount: -1,
+        },
+      },
+      "main"
+    );
+
+    page1Tl.to(
       ".page1-para2-line1>h3>div",
       {
         y: 60,
@@ -323,7 +350,6 @@ const page1Canvas = () => {
 };
 page1Canvas();
 
-
 const page2Animation = () => {
   clutterAnimation(".page2-heading-line1>h1");
   clutterAnimation(".page2-heading-line2>h1");
@@ -334,7 +360,7 @@ const page2Animation = () => {
       trigger: ".page2",
       scroller: "body",
       start: "top 0",
-      end: "top -100%",
+      end: "top -200%",
       scrub: 1,
       pin: true,
       // markers: true,
@@ -522,5 +548,172 @@ const page2Animation = () => {
       from: "x",
     },
   });
+
+  page2Tl.to(
+    ".page2-heading-line1>h1>div",
+    {
+      opacity: 0,
+      y: 60,
+      stagger: {
+        amount: -1,
+        from: "x",
+      },
+    },
+    "line1-to"
+  );
+  page2Tl.to(
+    ".page2-heading-line2>h1>div",
+    {
+      opacity: 0,
+      y: 60,
+      stagger: {
+        amount: -1,
+        from: "x",
+      },
+    },
+    "line1-to"
+  );
+  page2Tl.to(
+    ".page2-heading-line3>h1>div",
+    {
+      opacity: 0,
+      y: 60,
+      stagger: {
+        amount: -1,
+        from: "x",
+      },
+    },
+    "line1-to"
+  );
+
+  page2Tl.to(".c1", {
+    opacity: 0,
+  });
+
+  page2Tl.to(".main-circle", {
+    opacity: 0,
+  });
+
+  page2Tl.to(".interval-line", {
+    width: "0",
+  });
+
+  page2Tl.to(".c2", {
+    opacity: "0",
+  });
+
+  page2Tl.to(".y2100>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".y2090>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".y2080>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".y2070>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".y2060>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".y2050>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".y2040>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+  page2Tl.to(".y2030>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".y2024>h3>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".switch-co2>h1>div", {
+    y: 20,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+  page2Tl.to(".bar", {
+    y: 20,
+    opacity: 0,
+  });
+
+  page2Tl.to(
+    ".switch-heat>h1>div",
+    {
+      y: 20,
+      opacity: 0,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
+    },
+    "blue-line-to"
+  );
+
+  page2Tl.to(
+    ".blue-bar",
+    {
+      width: "0",
+    },
+    "blue-line-to"
+  );
 };
 page2Animation();

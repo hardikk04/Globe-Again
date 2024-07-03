@@ -471,10 +471,6 @@ html {
   object-fit: contain;
 }
 
-.pin-spacer {
-  pointer-events: none;
-}
-
 .page3 img {
   height: 100%;
   width: 100%;

@@ -76,107 +76,6 @@ const page1Animation = () => {
 };
 page1Animation();
 
-const videoAnimation = () => {
-  let flag = true;
-
-  const video = document.querySelector(".v1");
-  const video2 = document.querySelector(".v2");
-  // video.playbackRate = 2.0;
-  // video2.playbackRate = 3.0;
-  video.addEventListener("ended", () => {
-    const page1Tl = gsap.timeline();
-
-    page1Tl.to(
-      ".page1-para1-line1>h3>div",
-      {
-        y: 20,
-        opacity: 0,
-        delay: -0.1,
-        stagger: {
-          amount: -1,
-        },
-      },
-      "para1-p"
-    );
-
-    page1Tl.to(
-      ".page1-para1-line2>h3>div",
-      {
-        y: 20,
-        delay: -0.1,
-        opacity: 0,
-        stagger: {
-          amount: -1,
-        },
-      },
-      "para1-p"
-    );
-
-    clutterAnimation(".page1-para2-line1>h3");
-    clutterAnimation(".page1-para2-line2>h3");
-    page1Tl.to(".page1-para2", {
-      opacity: 1,
-    });
-
-    page1Tl.from(
-      ".page1-para2-line1>h3>div",
-      {
-        y: 60,
-        opacity: 0,
-        delay: -0.4,
-        stagger: {
-          amount: 0.9,
-        },
-      },
-      "para2"
-    );
-
-    page1Tl.from(
-      ".page1-para2-line2>h3>div",
-      {
-        y: 60,
-        opacity: 0,
-        delay: -0.4,
-        stagger: {
-          amount: 0.9,
-        },
-      },
-      "para2"
-    );
-
-    gsap.to(".svg .v1", {
-      opacity: 0,
-    });
-    gsap.to(".svg .v3", {
-      opacity: 1,
-    });
-  });
-
-  window.addEventListener("scroll", function () {
-    let scrollTop = window.scrollY || window.pageYOffset;
-
-    if (scrollTop > 1) {
-      gsap.to(".svg .v1", {
-        opacity: 0,
-      });
-
-      gsap.to(".svg .v2", {
-        opacity: 1,
-      });
-      gsap.to(".svg .v3", {
-        opacity: 0,
-      });
-    }
-
-    const video2 = document.querySelector(".v2");
-    if (flag) {
-      flag = false;
-      video2.play();
-    }
-  });
-};
-// videoAnimation();
-
 const page1Canvas = () => {
   const canvas = document.querySelector(".page1 canvas");
   const context = canvas.getContext("2d");
@@ -420,6 +319,7 @@ const page1Canvas = () => {
 };
 page1Canvas();
 
+
 const page2Animation = () => {
   clutterAnimation(".page2-heading-line1>h1");
   clutterAnimation(".page2-heading-line2>h1");
@@ -430,10 +330,10 @@ const page2Animation = () => {
       trigger: ".page2",
       scroller: "body",
       start: "top 0",
-      end: "top -200%",
+      end: "top -100%",
       scrub: 1,
       pin: true,
-      markers: true,
+      // markers: true,
     },
   });
 
@@ -501,82 +401,82 @@ const page2Animation = () => {
   clutterAnimation(".y2100>h3");
 
   page2Tl.from(".y2024>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });
 
   page2Tl.from(".y2030>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });
 
   page2Tl.from(".y2040>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });
 
   page2Tl.from(".y2050>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });
 
   page2Tl.from(".y2060>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });
 
   page2Tl.from(".y2070>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });
 
   page2Tl.from(".y2080>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });
 
   page2Tl.from(".y2090>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });
 
   page2Tl.from(".y2100>h3>div", {
-    y: -20,
+    y: 20,
     opacity: 0,
     stagger: {
-      amount: -0.5,
+      amount: 0.5,
       from: "x",
     },
   });

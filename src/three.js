@@ -136,7 +136,11 @@ window.addEventListener("resize", () => {
 /**
  * Renderer
  */
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true });
+const renderer = new THREE.WebGLRenderer({
+  canvas,
+  alpha: true,
+  antialias: true,
+});
 renderer.setPixelRatio(Math.min(2, window.devicePixelRatio));
 renderer.setSize(sizes.width, sizes.height);
 
@@ -737,7 +741,7 @@ const page3Animation = () => {
 
   tl.to(".globe-model", {
     left: "5%",
-    top:"15%",
+    top: "15%",
     scrollTrigger: {
       scroller: "body",
       trigger: ".page3",

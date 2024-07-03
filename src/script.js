@@ -172,6 +172,10 @@ const page1Canvas = () => {
     clutterAnimation(".page1-para1-line1>h3");
     clutterAnimation(".page1-para1-line2>h3");
 
+    page1Tl.to(".scroll-down", {
+      opacity: 0,
+    });
+    
     page1Tl.from(
       ".page1-para1-line1>h3>div",
       {

@@ -45,13 +45,14 @@ html {
 .main {
   position: relative;
   width: 100%;
-  background-color: #fdfdfd;
+  background-color: #fff;
 }
 
 .page1 {
   position: relative;
   height: 100vh;
   width: 100%;
+  background-color: #fdfdfd;
 }
 
 .page1-half {
@@ -226,7 +227,8 @@ html {
 
 .page2-heading h1 {
   font-family: bold;
-  font-size: 2.3vw;
+  font-size: 2vw;
+  text-transform: uppercase;
 }
 
 .page2-heading-line1 {
@@ -399,6 +401,7 @@ html {
   justify-content: space-between;
   pointer-events: none;
   z-index: 10;
+  /* background-color: #fff; */
 }
 
 .page3-left {

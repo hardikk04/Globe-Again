@@ -2,7 +2,6 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/Addons.js";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Draggable } from "gsap/Draggable";
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 
@@ -97,6 +96,7 @@ heatGlobe.scale.set(1, 1, 1);
 heatGlobe.position.y = 0.4;
 heatGlobe.position.x = 2;
 heatGlobeGroup.add(heatGlobe);
+heatGlobe.rotation.x = 0.85;
 
 /**
  * Sizes
@@ -116,7 +116,8 @@ const camera = new THREE.PerspectiveCamera(
   0.1,
   100
 );
-camera.position.z = 5;
+camera.position.z = 4.5;
+// camera.position.y = 2;
 // camera.position.x = -2;
 scene.add(camera);
 
@@ -184,7 +185,7 @@ const page2Tl = gsap.timeline({
     trigger: ".page2",
     scroller: "body",
     start: "top 0",
-    end: "top -100%",
+    end: "top -50%",
     scrub: 1,
     // markers: true,
   },
@@ -552,6 +553,7 @@ const canvasAnimation = () => {
       scroller: `body`,
     },
   });
+
   tl.from(".page3-right-para1>h3>div", {
     opacity: 0,
     stagger: {
@@ -702,8 +704,8 @@ const page3Animation = () => {
     scrollTrigger: {
       scroller: "body",
       trigger: ".page3",
-      start: "top 30%",
-      end: "top 0%",
+      start: "top 0%",
+      end: "top -30%",
       scrub: 1,
       // markers: true,
     },
@@ -721,8 +723,8 @@ const page3Animation = () => {
     scrollTrigger: {
       scroller: "body",
       trigger: ".page3",
-      start: "top 30%",
-      end: "top 0%",
+      start: "top 0%",
+      end: "top -30%",
       scrub: 1,
       // markers: true,
     },
@@ -732,15 +734,14 @@ const page3Animation = () => {
     scrollTrigger: {
       scroller: "body",
       trigger: ".page3",
-      start: "top 30%",
-      end: "top 0%",
+      start: "top 0%",
+      end: "top -30%",
       scrub: 1,
       // markers: true,
     },
   });
 
   tl.to(".globe-model", {
-    left: "5%",
     top: "15%",
     scrollTrigger: {
       scroller: "body",

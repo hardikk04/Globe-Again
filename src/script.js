@@ -3,13 +3,14 @@
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 // // Lenis js
-// window.onbeforeunload = function () {
-//   window.scrollTo(0, 0);
-// };
+window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+};
 
 const lenisJs = () => {
   const lenis = new Lenis();
@@ -66,7 +67,11 @@ const page1Animation = () => {
       stagger: {
         amount: 1,
       },
+      onComplete: () => {
+        gsap.to(window, { duration: 3, scrollTo: 820 });
+      },
     },
+
     "main"
   );
 
@@ -181,6 +186,7 @@ const page1Canvas = () => {
       {
         y: 60,
         opacity: 0,
+        delay: 0.8,
         stagger: {
           amount: 1,
         },
@@ -192,7 +198,7 @@ const page1Canvas = () => {
       ".page1-para1-line2>h3>div",
       {
         y: 60,
-        delay: 0.4,
+        delay: 1.2,
         opacity: 0,
         stagger: {
           amount: 1,
@@ -264,6 +270,7 @@ const page1Canvas = () => {
       {
         y: 60,
         opacity: 0,
+        delay: 3,
         stagger: {
           amount: -1,
         },
@@ -279,6 +286,7 @@ const page1Canvas = () => {
       {
         y: 60,
         opacity: 0,
+        delay: 3,
         stagger: {
           amount: -1,
         },
@@ -359,8 +367,8 @@ const page2Animation = () => {
     scrollTrigger: {
       trigger: ".page2",
       scroller: "body",
-      start: "top 0",
-      end: "top -200%",
+      start: "top 0%",
+      end: "top -250%",
       scrub: 1,
       pin: true,
       // markers: true,
@@ -372,6 +380,7 @@ const page2Animation = () => {
     {
       opacity: 0,
       y: 60,
+      delay: 3.5,
       stagger: {
         amount: 1,
         from: "x",
@@ -384,6 +393,7 @@ const page2Animation = () => {
     {
       opacity: 0,
       y: 60,
+      delay: 3.5,
       stagger: {
         amount: 1,
         from: "x",
@@ -396,6 +406,7 @@ const page2Animation = () => {
     {
       opacity: 0,
       y: 60,
+      delay: 3.5,
       stagger: {
         amount: 1,
         from: "x",
@@ -412,9 +423,13 @@ const page2Animation = () => {
     opacity: 0,
   });
 
-  page2Tl.from(".interval-line", {
-    width: "0",
-  });
+  page2Tl.from(
+    ".interval-line",
+    {
+      width: "0",
+    },
+    "from"
+  );
 
   page2Tl.from(".c2", {
     opacity: "0",
@@ -430,86 +445,131 @@ const page2Animation = () => {
   clutterAnimation(".y2090>h3");
   clutterAnimation(".y2100>h3");
 
-  page2Tl.from(".y2024>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2024>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -1,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
-  page2Tl.from(".y2030>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2030>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -0.9,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
-  page2Tl.from(".y2040>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2040>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -0.8,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
-  page2Tl.from(".y2050>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2050>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -0.7,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
-  page2Tl.from(".y2060>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2060>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -0.6,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
-  page2Tl.from(".y2070>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2070>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -0.5,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
-  page2Tl.from(".y2080>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2080>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -0.4,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
-  page2Tl.from(".y2090>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2090>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -0.3,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
-  page2Tl.from(".y2100>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: 0.5,
-      from: "x",
+  page2Tl.from(
+    ".y2100>h3>div",
+    {
+      y: 10,
+      opacity: 0,
+      delay: -0.2,
+      stagger: {
+        amount: 0.5,
+        from: "x",
+      },
     },
-  });
+    "from"
+  );
 
   clutterAnimation(".switch-heat>h1");
   clutterAnimation(".switch-co2>h1");
@@ -594,93 +654,142 @@ const page2Animation = () => {
     opacity: 0,
   });
 
-  page2Tl.to(".interval-line", {
-    width: "0",
-  });
+  page2Tl.to(
+    ".interval-line",
+    {
+      width: "0",
+    },
+    "to"
+  );
 
   page2Tl.to(".c2", {
     opacity: "0",
   });
 
-  page2Tl.to(".y2100>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+  page2Tl.to(
+    ".y2100>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -1,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
+    "to"
+  );
 
-  page2Tl.to(".y2090>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+  page2Tl.to(
+    ".y2090>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -0.9,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
+    "to"
+  );
 
-  page2Tl.to(".y2080>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+  page2Tl.to(
+    ".y2080>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -0.8,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
+    "to"
+  );
 
-  page2Tl.to(".y2070>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+  page2Tl.to(
+    ".y2070>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -0.7,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
+    "to"
+  );
 
-  page2Tl.to(".y2060>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+  page2Tl.to(
+    ".y2060>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -0.6,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
+    "to"
+  );
 
-  page2Tl.to(".y2050>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+  page2Tl.to(
+    ".y2050>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -0.5,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
+    "to"
+  );
 
-  page2Tl.to(".y2040>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+  page2Tl.to(
+    ".y2040>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -0.4,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
-  page2Tl.to(".y2030>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+    "to"
+  );
+  page2Tl.to(
+    ".y2030>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -0.3,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
+    "to"
+  );
 
-  page2Tl.to(".y2024>h3>div", {
-    y: 20,
-    opacity: 0,
-    stagger: {
-      amount: -0.5,
-      from: "x",
+  page2Tl.to(
+    ".y2024>h3>div",
+    {
+      y: 20,
+      opacity: 0,
+      delay: -0.2,
+      stagger: {
+        amount: -0.5,
+        from: "x",
+      },
     },
-  });
+    "to"
+  );
 
   page2Tl.to(".switch-co2>h1>div", {
     y: 20,
@@ -715,5 +824,110 @@ const page2Animation = () => {
     },
     "blue-line-to"
   );
+
+  page2Tl.to(".globe-model", {
+    left: "5%",
+    duration: 5,
+  });
 };
 page2Animation();
+
+const fn = () => {
+  let lastScrollTop = 0;
+  let index = 0;
+  let flag = true;
+  let flag2 = true;
+
+  window.addEventListener("scroll", function (event) {
+    let currentScrollTop =
+      window.pageYOffset || document.documentElement.scrollTop;
+
+    // event.preventDefault();
+
+    if (currentScrollTop > lastScrollTop) {
+      if (index === 0) {
+        if (currentScrollTop > 20) {
+          if (flag) {
+            gsap.to(window, { duration: 5, scrollTo: 760 });
+            flag = false;
+            index = 99;
+            setTimeout(() => {
+              index = 1;
+              flag = true;
+            }, 5000);
+          }
+        }
+      } else if (index === 1) {
+        if (currentScrollTop > 760) {
+          if (flag) {
+            gsap.to(window, { duration: 5, scrollTo: 1650 });
+            index = 99;
+            setTimeout(() => {
+              index = 2;
+              flag = true;
+            }, 5000);
+          }
+        }
+      } else if (index === 2) {
+        if (currentScrollTop > 1690)
+          if (flag) {
+            gsap.to(window, { duration: 5, scrollTo: 4346 });
+            index = 99;
+            setTimeout(() => {
+              index = 3;
+              flag = true;
+            }, 5000);
+          }
+      } else if (index === 3) {
+        if (currentScrollTop > 4372) {
+          if (flag) {
+            gsap.to(window, {
+              duration: 8,
+              scrollTo:
+                document.documentElement.scrollHeight - window.innerHeight,
+            });
+            index = 99;
+            setTimeout(() => {
+              index = 3;
+              flag = true;
+            }, 8000);
+          }
+        }
+      }
+    } else {
+      if (index === 0) {
+        index = 99;
+        setTimeout(() => {
+          index = 0;
+        }, 5000);
+        gsap.to(window, { duration: 5, scrollTo: 0 });
+      } else if (index === 1) {
+        index = 99;
+        setTimeout(() => {
+          index = 0;
+        }, 5000);
+        gsap.to(window, { duration: 5, scrollTo: 760 });
+      } else if (index === 2) {
+        index = 99;
+        setTimeout(() => {
+          index = 1;
+        }, 5000);
+        gsap.to(window, { duration: 5, scrollTo: 1650 });
+      } else if (index === 3) {
+        console.log(currentScrollTop);
+        index = 99;
+        setTimeout(() => {
+          index = 2;
+          console.log(index);
+        }, 5000);
+        gsap.to(window, {
+          duration: 5,
+          scrollTo: 4346,
+        });
+      }
+    }
+
+    lastScrollTop = currentScrollTop;
+  });
+};
+// fn();

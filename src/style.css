@@ -11,16 +11,14 @@ html {
   height: 100%;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 0;
   height: 0;
 }
 
 body {
-  scrollbar-width: none; /* Firefox */
-/* } */
- 
-
+  scrollbar-width: none;
+}
 
 /* Fonts */
 @font-face {
@@ -91,7 +89,7 @@ body {
 }
 
 .page1-main-text h1 {
-  font-size: 2vw;
+  font-size: 1.6vw;
 }
 
 .svg {
@@ -126,7 +124,7 @@ body {
 }
 
 .svg canvas {
-  scale: 2;
+  scale: 1.2;
 }
 
 .svg img {
@@ -150,7 +148,7 @@ body {
   justify-content: center;
   font-family: light;
   text-align: center;
-  font-size: 0.9vw;
+  font-size: 0.7vw;
   margin-top: 4vw;
 }
 
@@ -215,6 +213,8 @@ body {
   height: 100vh;
   width: 100%;
   display: flex;
+  background-color: #fdfdfd;
+  z-index: 9;
 }
 
 .page2-left {
@@ -237,7 +237,7 @@ body {
 
 .page2-heading h1 {
   font-family: bold;
-  font-size: 2vw;
+  font-size: 1.6vw;
   text-transform: uppercase;
 }
 
@@ -327,7 +327,6 @@ body {
   width: 1vw;
   cursor: pointer;
   overflow: hidden;
-  padding-top: 0.25vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -338,7 +337,8 @@ body {
 }
 
 .years h3 {
-  font-size: 0.9vw;
+  font-size: 0.7vw;
+  margin-top: -0.5vw;
   -webkit-transform-origin: center bottom;
   -ms-transform-origin: center bottom;
   transform-origin: center bottom;
@@ -359,6 +359,7 @@ body {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
+  font-size: 0.6vw;
 }
 
 .switch-heat {
@@ -369,10 +370,32 @@ body {
   cursor: pointer;
 }
 
+.switch-co2 {
+  display: flex;
+  align-items: end;
+}
+
+.switch-co2 small {
+  font-family: medium;
+  font-size: 1vw;
+  font-weight: 500;
+}
+
+.switch-co22 {
+  display: flex;
+  align-items: end;
+}
+
+.switch-co22 small {
+  font-family: medium;
+  font-size: 1vw;
+  font-weight: 500;
+}
+
 .blue-bar {
   position: absolute;
   height: 2px;
-  width: 30%;
+  width: 28%;
   background-color: rgb(10, 150, 244);
   left: 0;
   bottom: -15%;
@@ -387,7 +410,119 @@ body {
   left: 45%;
   height: 100%;
   width: 55%;
-  /* background-color: salmon; */
+  z-index: 10;
+}
+
+.legend {
+  position: relative;
+  margin-top: 6vw;
+  font-family: light;
+  text-transform: uppercase;
+}
+
+.legend-text {
+  position: relative;
+  overflow: hidden;
+}
+
+.legend-text > h3 {
+  letter-spacing: 2px;
+  font-size: 0.6vw;
+}
+
+.legend-bar {
+  position: relative;
+  width: 65%;
+  height: 0.8vh;
+  margin-top: 0.7vw;
+  display: flex;
+}
+
+.legend-elem {
+  position: relative;
+  height: 100%;
+  width: calc(100% / 11);
+}
+
+.l1 {
+  background-color: rgb(33, 26, 92);
+}
+.l2 {
+  background-color: rgb(53, 36, 205);
+}
+
+.l3 {
+  background-color: rgb(10, 150, 244);
+}
+
+.l4 {
+  background-color: rgb(82, 177, 240);
+}
+
+.l5 {
+  background-color: rgb(157, 212, 249);
+}
+
+.l6 {
+  background-color: rgb(114, 149, 172);
+}
+
+.l7 {
+  background-color: rgb(234, 224, 149);
+}
+
+.l8 {
+  background-color: rgb(233, 213, 58);
+}
+
+.l9 {
+  background-color: rgb(238, 108, 85);
+}
+
+.l10 {
+  background-color: rgb(235, 39, 4);
+}
+
+.l11 {
+  background-color: rgb(46, 7, 0);
+}
+
+.value {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  font-family: light;
+  width: 65%;
+}
+
+.value > div {
+  height: 5.5vh;
+  width: 1vw;
+  cursor: pointer;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.y2024 {
+  overflow: hidden;
+}
+
+.value h3 {
+  font-size: 0.6vw;
+  margin-top: -.5vw;
+  -webkit-transform-origin: center bottom;
+  -ms-transform-origin: center bottom;
+  transform-origin: center bottom;
+  rotate: -90deg;
+  line-height: 0.1;
+  letter-spacing: 1px;
+  white-space: nowrap;
 }
 
 .webgl {
@@ -415,7 +550,7 @@ body {
 
 .page3-left {
   position: relative;
-  width: 43%;
+  width: 32%;
   height: 100%;
 }
 .page3-left-headline {
@@ -425,7 +560,7 @@ body {
 
 .page3-left-headline > h1 {
   font-family: bold;
-  font-size: 2.15vw;
+  font-size: 1.6vw;
 }
 
 .switch2 {
@@ -440,6 +575,7 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   pointer-events: all;
+  font-size: 0.6vw;
 }
 
 .switch2 h1:nth-child(odd) {

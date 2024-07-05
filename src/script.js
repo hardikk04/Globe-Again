@@ -20,7 +20,7 @@ const lenisJs = () => {
   lenis.on("scroll", ScrollTrigger.update);
 
   gsap.ticker.add((time) => {
-    lenis.raf(time * 500);
+    lenis.raf(time * 600);
   });
 
   gsap.ticker.lagSmoothing(0);
@@ -74,10 +74,6 @@ const page1Animation = () => {
 
     "main"
   );
-
-  page1Tl.from(".scroll-down", {
-    opacity: 0,
-  });
 };
 page1Animation();
 
@@ -122,13 +118,14 @@ const page1Canvas = () => {
   //   render();
   // });
 
-  const frameCount = 244;
+  const frameCount = 213;
 
   let renderImg = ``;
   for (let i = 0; i < frameCount; i++) {
-    renderImg += `canvas/canvas (${i}).png
+    renderImg += `canvas1/canvas2/frame1 (${i}).png
     `;
   }
+  console.log(renderImg);
 
   function files(index) {
     var data = renderImg;
@@ -193,6 +190,10 @@ const page1Canvas = () => {
       },
       "para1"
     );
+
+    page1Tl.from(".scroll-down", {
+      opacity: 0,
+    });
 
     page1Tl.from(
       ".page1-para1-line2>h3>div",
@@ -319,6 +320,10 @@ const page1Canvas = () => {
       },
       "para2-out"
     );
+
+    page1Tl.to(".scroll-down", {
+      opacity: 0,
+    });
   };
 
   textAnimations();
@@ -368,7 +373,7 @@ const page2Animation = () => {
       trigger: ".page2",
       scroller: "body",
       start: "top 0%",
-      end: "top -250%",
+      end: "top -300%",
       scrub: 1,
       pin: true,
       // markers: true,
@@ -379,7 +384,7 @@ const page2Animation = () => {
     ".page2-heading-line1>h1>div",
     {
       opacity: 0,
-      y: 60,
+      y: 20,
       delay: 3.5,
       stagger: {
         amount: 1,
@@ -392,7 +397,7 @@ const page2Animation = () => {
     ".page2-heading-line2>h1>div",
     {
       opacity: 0,
-      y: 60,
+      y: 20,
       delay: 3.5,
       stagger: {
         amount: 1,
@@ -405,7 +410,7 @@ const page2Animation = () => {
     ".page2-heading-line3>h1>div",
     {
       opacity: 0,
-      y: 60,
+      y: 20,
       delay: 3.5,
       stagger: {
         amount: 1,
@@ -577,7 +582,7 @@ const page2Animation = () => {
   page2Tl.from(
     ".switch-heat>h1>div",
     {
-      y: 20,
+      y: 8,
       opacity: 0,
       stagger: {
         amount: 0.5,
@@ -601,7 +606,7 @@ const page2Animation = () => {
   });
 
   page2Tl.from(".switch-co2>h1>div", {
-    y: 20,
+    y: 8,
     opacity: 0,
     stagger: {
       amount: 0.5,
@@ -609,11 +614,45 @@ const page2Animation = () => {
     },
   });
 
+  page2Tl.from(".switch-co2>small", {
+    y: 8,
+    opacity: 0,
+  });
+
+  clutterAnimation(".legend-text>h3");
+
+  page2Tl.from(".legend-text>h3>div", {
+    y: 10,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.from(".legend-bar", {
+    width: "0",
+  });
+
+  page2Tl.from(".value h3", {
+    x: 10,
+    opacity: 0,
+    stagger: {
+      amount: 0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".page2", {
+    backgroundColor: "#fff",
+    delay: 6,
+  });
+
   page2Tl.to(
     ".page2-heading-line1>h1>div",
     {
       opacity: 0,
-      y: 60,
+      y: 20,
       stagger: {
         amount: -1,
         from: "x",
@@ -625,7 +664,7 @@ const page2Animation = () => {
     ".page2-heading-line2>h1>div",
     {
       opacity: 0,
-      y: 60,
+      y: 20,
       stagger: {
         amount: -1,
         from: "x",
@@ -637,7 +676,7 @@ const page2Animation = () => {
     ".page2-heading-line3>h1>div",
     {
       opacity: 0,
-      y: 60,
+      y: 20,
       stagger: {
         amount: -1,
         from: "x",
@@ -791,14 +830,24 @@ const page2Animation = () => {
     "to"
   );
 
-  page2Tl.to(".switch-co2>h1>div", {
-    y: 20,
+  page2Tl.to(".switch-co2>small", {
+    y: 8,
     opacity: 0,
     stagger: {
       amount: -0.5,
       from: "x",
     },
   });
+
+  page2Tl.to(".switch-co2>h1>div", {
+    y: 8,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
   page2Tl.to(".bar", {
     y: 20,
     opacity: 0,
@@ -807,7 +856,7 @@ const page2Animation = () => {
   page2Tl.to(
     ".switch-heat>h1>div",
     {
-      y: 20,
+      y: 8,
       opacity: 0,
       stagger: {
         amount: -0.5,
@@ -824,6 +873,32 @@ const page2Animation = () => {
     },
     "blue-line-to"
   );
+
+  page2Tl.to(".legend-text>h3>div", {
+    y: 10,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".legend-bar", {
+    width: "0",
+  });
+
+  page2Tl.to(".value h3", {
+    x: 10,
+    opacity: 0,
+    stagger: {
+      amount: -0.5,
+      from: "x",
+    },
+  });
+
+  page2Tl.to(".page2", {
+    backgroundColor: "#fff",
+  });
 
   page2Tl.to(".globe-model", {
     left: "5%",

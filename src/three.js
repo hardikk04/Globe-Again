@@ -92,7 +92,7 @@ const heatGlobeMaterial = new THREE.ShaderMaterial({
 });
 
 const heatGlobe = new THREE.Mesh(heatGlobeGeometry, heatGlobeMaterial);
-heatGlobe.scale.set(1, 1, 1);
+heatGlobe.scale.set(0.8, 0.8, 0.8);
 heatGlobe.position.y = 0.4;
 heatGlobe.position.x = 2;
 heatGlobeGroup.add(heatGlobe);
@@ -714,21 +714,24 @@ const page3Animation = () => {
   clutterAnimation(".heat2");
   clutterAnimation(".co22");
 
-  tl.from(".switch2>h1>div,.switch2>h1:nth-child(2)", {
-    opacity: 0,
-    y: 30,
-    stagger: {
-      amount: 0.5,
-    },
-    scrollTrigger: {
-      scroller: "body",
-      trigger: ".page3",
-      start: "top 0%",
-      end: "top -30%",
-      scrub: 1,
-      // markers: true,
-    },
-  });
+  tl.from(
+    ".switch2>h1>div,.switch2>h1:nth-child(2),.co22>div,.switch-co22 small",
+    {
+      opacity: 0,
+      y: 30,
+      stagger: {
+        amount: 0.5,
+      },
+      scrollTrigger: {
+        scroller: "body",
+        trigger: ".page3",
+        start: "top 0%",
+        end: "top -30%",
+        scrub: 1,
+        // markers: true,
+      },
+    }
+  );
   tl.from(".blue-bar2", {
     transform: "scaleX(0)",
     scrollTrigger: {

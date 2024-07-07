@@ -4,6 +4,9 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
+import { Draggable } from "gsap/Draggable";
+
+gsap.registerPlugin(ScrollTrigger, Draggable);
 
 const clutterAnimation = (element) => {
   const htmlTag = document.querySelector(element);
@@ -215,12 +218,13 @@ let prevIndex = 0;
 const switchHeatAndCO2 = () => {
   const heat = document.querySelector(".heat");
   heat.addEventListener("click", () => {
+    console.log(prevIndex, globalIndex);
     gsap.from(heatGlobeMaterial.uniforms.uAlpha, {
       value: 0,
       duration: 1,
     });
     heatGlobeMaterial.uniforms.uPrevTextures.value =
-      loadedCO2Textures[prevIndex];
+    loadedHeatTextures[prevIndex];
     heatGlobeMaterial.uniforms.uTextures.value =
       loadedHeatTextures[globalIndex];
 
@@ -232,12 +236,13 @@ const switchHeatAndCO2 = () => {
   });
   const co2 = document.querySelector(".co2");
   co2.addEventListener("click", () => {
+    console.log(prevIndex, globalIndex);
     gsap.from(heatGlobeMaterial.uniforms.uAlpha, {
       value: 0,
       duration: 1,
     });
     heatGlobeMaterial.uniforms.uPrevTextures.value =
-      loadedHeatTextures[prevIndex];
+    loadedCO2Textures[prevIndex];
     heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[globalIndex];
 
     gsap.to(".blue-bar,.blue-bar2", {
@@ -283,6 +288,64 @@ const switchHeatAndCO2 = () => {
   });
 };
 switchHeatAndCO2();
+
+const scrubableBar = () => {
+  function getNormalizedLeftValue(element, minRange, maxRange) {
+    // Get the bounding client rectangle of the element
+    var rect = element.getBoundingClientRect();
+
+    // Get the left position
+    var left = rect.left;
+
+    // Define the maximum and minimum possible values for the left position in the current viewport
+    var minValue = 0; // Minimum value of the left position
+    var maxValue = window.innerWidth; // Maximum value of the left position, assuming full viewport width
+
+    // Normalize the left position to a value between minRange and maxRange
+    var normalizedLeft =
+      ((left - minValue) / (maxValue - minValue)) * (maxRange - minRange) +
+      minRange;
+
+    // Round the normalized value to get an integer between minRange and maxRange
+    normalizedLeft = Math.round(normalizedLeft);
+
+    return normalizedLeft;
+  }
+
+  Draggable.create(".main-circle", {
+    type: "x",
+    bounds: ".interval-loader",
+    onDrag: () => {
+      const bar = document.querySelector(".main-circle");
+      var normalizedLeft = getNormalizedLeftValue(bar, -2, 24);
+      // prevIndex = globalIndex;
+
+      if (flag === "heat") {
+        gsap.from(heatGlobeMaterial.uniforms.uAlpha, {
+          value: 0,
+          duration: 1,
+        });
+        heatGlobeMaterial.uniforms.uPrevTextures.value =
+        loadedHeatTextures[Math.abs(normalizedLeft)];
+        heatGlobeMaterial.uniforms.uTextures.value =
+          loadedHeatTextures[Math.abs(normalizedLeft - 1)];
+      } else if (flag === "co2") {
+        gsap.from(heatGlobeMaterial.uniforms.uAlpha, {
+          value: 0,
+          duration: 1,
+        });
+        heatGlobeMaterial.uniforms.uPrevTextures.value =
+        loadedCO2Textures[Math.abs(normalizedLeft)];
+        heatGlobeMaterial.uniforms.uTextures.value =
+          loadedCO2Textures[Math.abs(normalizedLeft - 1)];
+      }
+
+      prevIndex = Math.abs(normalizedLeft - 1);
+      globalIndex = Math.abs(normalizedLeft);
+    },
+  });
+};
+scrubableBar();
 
 const pointerBlinkWithCicrcle = () => {
   const tl = gsap.timeline();
@@ -411,7 +474,7 @@ const yearsAnimation = () => {
     year.addEventListener("click", () => {
       prevIndex = globalIndex;
       gsap.to(".main-circle", {
-        left: 12.1 * index + "%",
+        left: 12.15 * index + "%",
         onComplete: () => {
           if (index === 0 || index === 8) {
             pointerBlinkWithoutCicrcle();
@@ -442,7 +505,7 @@ const yearsAnimation = () => {
     });
   });
 };
-yearsAnimation();
+// yearsAnimation();
 
 let canvasIndex = 0;
 const canvasAnimation = () => {
@@ -487,7 +550,9 @@ const canvasAnimation = () => {
   });
 
   let renderImg = ``;
-  for (let i = 0; i < 320; i++) {
+  const frameCount = 320;
+
+  for (let i = 0; i < frameCount; i++) {
     renderImg += `temp/frame${i}.png
     `;
   }
@@ -496,8 +561,6 @@ const canvasAnimation = () => {
     var data = renderImg;
     return data.split("\n")[index];
   }
-
-  const frameCount = 320;
 
   const images = [];
   const imageSeq = {

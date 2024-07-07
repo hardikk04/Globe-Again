@@ -295,10 +295,38 @@ body {
   transform-origin: top left;
 }
 
+.dots {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 3.7vw;
+  align-items: center;
+  width: 100%;
+}
+
+.dot {
+  flex-shrink: 0;
+  height: 0.6vh;
+  width: 0.6vh;
+  background-color: #000;
+  border-radius: 50%;
+}
+
+.dot:nth-child(1) {
+  opacity: 0;
+}
+
+.dot:nth-child(9) {
+  opacity: 0;
+}
+
 .interval-circle {
   position: relative;
   height: 2vh;
-  width: 2vh;
+  width: 2.1vh;
   border-radius: 50%;
   border: 1px solid #000;
   pointer-events: none;
@@ -337,7 +365,7 @@ body {
 }
 
 .years h3 {
-  font-size: 0.7vw;
+  font-size: 0.6vw;
   margin-top: -0.5vw;
   -webkit-transform-origin: center bottom;
   -ms-transform-origin: center bottom;
@@ -515,7 +543,7 @@ body {
 
 .value h3 {
   font-size: 0.6vw;
-  margin-top: -.5vw;
+  margin-top: -0.5vw;
   -webkit-transform-origin: center bottom;
   -ms-transform-origin: center bottom;
   transform-origin: center bottom;
@@ -545,7 +573,7 @@ body {
   justify-content: space-between;
   pointer-events: none;
   z-index: 10;
-  /* background-color: #fff; */
+  /* background-color: #000; */
 }
 
 .page3-left {

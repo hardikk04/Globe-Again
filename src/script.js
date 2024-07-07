@@ -3,9 +3,41 @@
 import Lenis from "@studio-freight/lenis";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Draggable } from "gsap/Draggable";
 import { ScrollToPlugin } from "gsap/ScrollToPlugin";
 
-gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+gsap.registerPlugin(ScrollTrigger, Draggable, ScrollToPlugin);
+
+function getNormalizedLeftValue(element, minRange, maxRange) {
+  // Get the bounding client rectangle of the element
+  var rect = element.getBoundingClientRect();
+
+  // Get the left position
+  var left = rect.left;
+
+  // Define the maximum and minimum possible values for the left position in the current viewport
+  var minValue = 0; // Minimum value of the left position
+  var maxValue = window.innerWidth; // Maximum value of the left position, assuming full viewport width
+
+  // Normalize the left position to a value between minRange and maxRange
+  var normalizedLeft =
+    ((left - minValue) / (maxValue - minValue)) * (maxRange - minRange) +
+    minRange;
+
+  // Round the normalized value to get an integer between minRange and maxRange
+  normalizedLeft = Math.round(normalizedLeft);
+
+  return normalizedLeft;
+}
+
+Draggable.create(".main-circle", {
+  type: "x",
+  bounds: ".interval-loader",
+  onDrag: () => {
+    const bar = document.querySelector(".main-circle");
+    var normalizedLeft = getNormalizedLeftValue(bar, -2, 24);
+  },
+});
 
 // // Lenis js
 window.onbeforeunload = function () {
@@ -125,7 +157,6 @@ const page1Canvas = () => {
     renderImg += `canvas1/canvas2/frame1 (${i}).png
     `;
   }
-  console.log(renderImg);
 
   function files(index) {
     var data = renderImg;
@@ -384,7 +415,7 @@ const page2Animation = () => {
     ".page2-heading-line1>h1>div",
     {
       opacity: 0,
-      y: 20,
+      y: 10,
       delay: 3.5,
       stagger: {
         amount: 1,
@@ -397,7 +428,7 @@ const page2Animation = () => {
     ".page2-heading-line2>h1>div",
     {
       opacity: 0,
-      y: 20,
+      y: 10,
       delay: 3.5,
       stagger: {
         amount: 1,
@@ -410,7 +441,7 @@ const page2Animation = () => {
     ".page2-heading-line3>h1>div",
     {
       opacity: 0,
-      y: 20,
+      y: 10,
       delay: 3.5,
       stagger: {
         amount: 1,
@@ -432,6 +463,15 @@ const page2Animation = () => {
     ".interval-line",
     {
       width: "0",
+    },
+    "from"
+  );
+
+  page2Tl.from(
+    ".dot",
+    {
+      opacity: "0",
+      stagger: { amount: 0.5 },
     },
     "from"
   );
@@ -652,7 +692,7 @@ const page2Animation = () => {
     ".page2-heading-line1>h1>div",
     {
       opacity: 0,
-      y: 20,
+      y: 10,
       stagger: {
         amount: -1,
         from: "x",
@@ -664,7 +704,7 @@ const page2Animation = () => {
     ".page2-heading-line2>h1>div",
     {
       opacity: 0,
-      y: 20,
+      y: 10,
       stagger: {
         amount: -1,
         from: "x",
@@ -676,7 +716,7 @@ const page2Animation = () => {
     ".page2-heading-line3>h1>div",
     {
       opacity: 0,
-      y: 20,
+      y: 10,
       stagger: {
         amount: -1,
         from: "x",
@@ -697,6 +737,15 @@ const page2Animation = () => {
     ".interval-line",
     {
       width: "0",
+    },
+    "to"
+  );
+
+  page2Tl.to(
+    ".dot",
+    {
+      opacity: "0",
+      stagger: { amount: 0.5 },
     },
     "to"
   );

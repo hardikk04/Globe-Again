@@ -892,6 +892,11 @@ const page2Animation = () => {
     "to"
   );
 
+  page2Tl.to(".scrub > h3", {
+    opacity: 0,
+    stagger: -0.1,
+  });
+
   page2Tl.to(".switch-co2>small", {
     y: 8,
     opacity: 0,

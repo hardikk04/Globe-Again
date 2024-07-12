@@ -253,9 +253,21 @@ body {
   overflow: hidden;
 }
 
+.scrub {
+  position: relative;
+  font-family: medium;
+  margin-top: 8vw;
+}
+
+.scrub > h3 {
+  opacity: 0;
+  font-size: 0.6vw;
+  letter-spacing: 2px;
+}
+
 .interval {
   position: relative;
-  margin-top: 12vw;
+  margin-top: 3vw;
 }
 
 .main-circle {
@@ -293,6 +305,15 @@ body {
   -webkit-transform-origin: top left;
   -ms-transform-origin: top left;
   transform-origin: top left;
+}
+
+.bound {
+  position: absolute;
+  top: 50%;
+  left: 0.8%;
+  transform: translateY(-50%);
+  height: 2px;
+  width: 98.2%;
 }
 
 .dots {

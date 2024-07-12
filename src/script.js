@@ -681,6 +681,19 @@ const page2Animation = () => {
       amount: 0.5,
       from: "x",
     },
+    onComplete: () => {
+      gsap.to(".scrub > h3", {
+        opacity: 1,
+        stagger: 0.1,
+      });
+    },
+  });
+
+  document.querySelector(".main-circle").addEventListener("mousedown", () => {
+    gsap.to(".scrub > h3", {
+      opacity: 0,
+      stagger: -0.1,
+    });
   });
 
   page2Tl.to(".page2", {

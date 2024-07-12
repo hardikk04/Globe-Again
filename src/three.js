@@ -97,7 +97,7 @@ const heatGlobeMaterial = new THREE.ShaderMaterial({
 const heatGlobe = new THREE.Mesh(heatGlobeGeometry, heatGlobeMaterial);
 heatGlobe.scale.set(0.8, 0.8, 0.8);
 heatGlobe.position.y = 0.4;
-heatGlobe.position.x = 2;
+// heatGlobe.position.x = 0;
 heatGlobeGroup.add(heatGlobe);
 heatGlobe.rotation.x = 0.85;
 
@@ -151,12 +151,12 @@ renderer.setSize(sizes.width, sizes.height);
 /**
  * Controls
  */
-// const controls = new OrbitControls(camera, canvas);
-// controls.enableZoom = false;
-// controls.enablePan = false;
-// controls.enableDamping = true;
-// controls.minPolarAngle = 0.4 * Math.PI;
-// controls.maxPolarAngle = 0.4 * Math.PI;
+const controls = new OrbitControls(camera, canvas);
+controls.enableZoom = false;
+controls.enablePan = false;
+controls.enableDamping = true;
+controls.minPolarAngle = 0.4 * Math.PI;
+controls.maxPolarAngle = 0.4 * Math.PI;
 
 /**
  * Clock
@@ -178,7 +178,7 @@ const tick = () => {
   heatGlobe.rotation.y = getElaspedTime * 0.4;
 
   renderer.render(scene, camera);
-  //   controls.update();
+    controls.update();
   requestAnimationFrame(tick);
 };
 tick();
@@ -194,10 +194,10 @@ const page2Tl = gsap.timeline({
   },
 });
 
-page2Tl.to(
+page2Tl.from(
   heatGlobe.position,
   {
-    x: -1,
+    x: 2,
   },
   "g"
 );
@@ -260,7 +260,7 @@ const switchHeatAndCO2 = () => {
       duration: 1,
     });
     heatGlobeMaterial.uniforms.uPrevTextures.value =
-      loadedCO2Textures[canvasIndex];
+    loadedHeatTextures[canvasIndex];
     heatGlobeMaterial.uniforms.uTextures.value =
       loadedHeatTextures[canvasIndex];
 
@@ -277,7 +277,7 @@ const switchHeatAndCO2 = () => {
       duration: 1,
     });
     heatGlobeMaterial.uniforms.uPrevTextures.value =
-      loadedHeatTextures[canvasIndex];
+    loadedCO2Textures[canvasIndex];
     heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[canvasIndex];
 
     gsap.to(".blue-bar2,.blue-bar", {
@@ -314,7 +314,7 @@ const scrubableBar = () => {
 
   Draggable.create(".main-circle", {
     type: "x",
-    bounds: ".interval-loader",
+    bounds: ".bound",
     onDrag: () => {
       const bar = document.querySelector(".main-circle");
       var normalizedLeft = getNormalizedLeftValue(bar, -2, 24);

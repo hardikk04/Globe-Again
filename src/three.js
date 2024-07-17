@@ -97,7 +97,7 @@ const heatGlobeMaterial = new THREE.ShaderMaterial({
 const heatGlobe = new THREE.Mesh(heatGlobeGeometry, heatGlobeMaterial);
 heatGlobe.scale.set(0.8, 0.8, 0.8);
 heatGlobe.position.y = 0.4;
-// heatGlobe.position.x = 0;
+heatGlobe.position.x = 0;
 heatGlobeGroup.add(heatGlobe);
 heatGlobe.rotation.x = 0.85;
 
@@ -157,6 +157,7 @@ controls.enablePan = false;
 controls.enableDamping = true;
 controls.minPolarAngle = 0.4 * Math.PI;
 controls.maxPolarAngle = 0.4 * Math.PI;
+controls.dampingFactor = 0.05;
 
 /**
  * Clock
@@ -178,7 +179,7 @@ const tick = () => {
   heatGlobe.rotation.y = getElaspedTime * 0.4;
 
   renderer.render(scene, camera);
-    controls.update();
+  controls.update();
   requestAnimationFrame(tick);
 };
 tick();
@@ -224,7 +225,7 @@ const switchHeatAndCO2 = () => {
       duration: 1,
     });
     heatGlobeMaterial.uniforms.uPrevTextures.value =
-    loadedHeatTextures[prevIndex];
+      loadedHeatTextures[prevIndex];
     heatGlobeMaterial.uniforms.uTextures.value =
       loadedHeatTextures[globalIndex];
 
@@ -242,7 +243,7 @@ const switchHeatAndCO2 = () => {
       duration: 1,
     });
     heatGlobeMaterial.uniforms.uPrevTextures.value =
-    loadedCO2Textures[prevIndex];
+      loadedCO2Textures[prevIndex];
     heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[globalIndex];
 
     gsap.to(".blue-bar,.blue-bar2", {
@@ -260,7 +261,7 @@ const switchHeatAndCO2 = () => {
       duration: 1,
     });
     heatGlobeMaterial.uniforms.uPrevTextures.value =
-    loadedHeatTextures[canvasIndex];
+      loadedHeatTextures[canvasIndex];
     heatGlobeMaterial.uniforms.uTextures.value =
       loadedHeatTextures[canvasIndex];
 
@@ -277,7 +278,7 @@ const switchHeatAndCO2 = () => {
       duration: 1,
     });
     heatGlobeMaterial.uniforms.uPrevTextures.value =
-    loadedCO2Textures[canvasIndex];
+      loadedCO2Textures[canvasIndex];
     heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[canvasIndex];
 
     gsap.to(".blue-bar2,.blue-bar", {
@@ -326,7 +327,7 @@ const scrubableBar = () => {
           duration: 1,
         });
         heatGlobeMaterial.uniforms.uPrevTextures.value =
-        loadedHeatTextures[Math.abs(normalizedLeft)];
+          loadedHeatTextures[Math.abs(normalizedLeft)];
         heatGlobeMaterial.uniforms.uTextures.value =
           loadedHeatTextures[Math.abs(normalizedLeft - 1)];
       } else if (flag === "co2") {
@@ -335,7 +336,7 @@ const scrubableBar = () => {
           duration: 1,
         });
         heatGlobeMaterial.uniforms.uPrevTextures.value =
-        loadedCO2Textures[Math.abs(normalizedLeft)];
+          loadedCO2Textures[Math.abs(normalizedLeft)];
         heatGlobeMaterial.uniforms.uTextures.value =
           loadedCO2Textures[Math.abs(normalizedLeft - 1)];
       }
@@ -603,7 +604,10 @@ const canvasAnimation = () => {
   images[1].onload = render;
 
   clutterAnimation(".page3-right-point1>h3");
-  clutterAnimation(".page3-right-point2>h3");
+
+  clutterAnimation(".page3-right-point2>.para2-text>.f");
+  clutterAnimation(".page3-right-point2>.para2-text>.s");
+  clutterAnimation(".page3-right-point2>.para2-text>.j");
   clutterAnimation(".page3-right-para1>h3");
 
   const tl = gsap.timeline({
@@ -649,13 +653,28 @@ const canvasAnimation = () => {
   tl2.to(".page3-line-point2", {
     scale: 1,
   });
-  tl2.to(".page3-right-point2>h3>div", {
+  tl2.to(".page3-right-point2>.para2-text>.f>div", {
     opacity: 1,
     scale: 1,
     stagger: {
       amount: 0.5,
     },
-  });
+  },'k');
+  tl2.to(".page3-right-point2>.para2-text>.s>div", {
+    opacity: 1,
+    scale: 1,
+    stagger: {
+      amount: 0.5,
+    },
+  },'k');
+
+  tl2.to(".page3-right-point2>.para2-text>.j>div", {
+    opacity: 1,
+    scale: 1,
+    stagger: {
+      amount: 0.5,
+    },
+  },'k');
 
   function render() {
     scaleImage(images[imageSeq.frame], context);

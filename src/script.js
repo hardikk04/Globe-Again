@@ -968,8 +968,8 @@ const page2Animation = () => {
   });
 
   page2Tl.to(".globe-model", {
-    left: "5%",
-    duration: 5,
+    left: "20%",
+    duration: 8,
   });
 };
 page2Animation();

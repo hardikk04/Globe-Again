@@ -31,7 +31,7 @@ const scene = new THREE.Scene();
 const heatGlobeGroup = new THREE.Group();
 scene.add(heatGlobeGroup);
 
-const gui = new GUI();
+// const gui = new GUI();
 
 // Canvas
 const canvas = document.querySelector(".webgl");
@@ -40,8 +40,7 @@ const canvas = document.querySelector(".webgl");
  * Loader
  */
 const textureLoader = new THREE.TextureLoader();
-const heatmap = textureLoader.load("textures/HeatMap.png");
-heatmap.colorSpace = THREE.SRGBColorSpace;
+const heathyTexture = textureLoader.load("textures/heathy.jpg");
 
 // Heat textures
 const heatTextures = [
@@ -103,10 +102,6 @@ heatGlobe.scale.set(0.8, 0.8, 0.8);
 heatGlobe.position.x = 0;
 heatGlobeGroup.add(heatGlobe);
 heatGlobe.rotation.z = 0.5;
-
-gui.add(heatGlobe.rotation, "x").min(-30).max(30).step(0.0001);
-gui.add(heatGlobe.rotation, "y").min(-30).max(30).step(0.0001);
-gui.add(heatGlobe.rotation, "z").min(-30).max(30).step(0.0001);
 
 /**
  * Sizes
@@ -263,14 +258,36 @@ const switchHeatAndCO2 = () => {
 
   const heat2 = document.querySelector(".heat2");
   heat2.addEventListener("click", () => {
-    gsap.from(heatGlobeMaterial.uniforms.uAlpha, {
-      value: 0,
-      duration: 1,
-    });
-    heatGlobeMaterial.uniforms.uPrevTextures.value =
-      loadedHeatTextures[canvasIndex];
-    heatGlobeMaterial.uniforms.uTextures.value =
-      loadedHeatTextures[canvasIndex];
+    heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[canvasIndex];
+    if (canvasIndex === 0) {
+      heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[0];
+      heatGlobeMaterial.uniforms.uAlpha.value = 1;
+    } else if (canvasIndex === 1) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.3;
+    } else if (canvasIndex === 2) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.4;
+    } else if (canvasIndex === 3) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.5;
+    } else if (canvasIndex === 4) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.6;
+    } else if (canvasIndex === 5) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.7;
+    } else if (canvasIndex === 6) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.8;
+    } else if (canvasIndex === 7) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.9;
+    } else if (canvasIndex === 8) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 1;
+    }
+
 
     gsap.to(".blue-bar2,.blue-bar", {
       left: 0,
@@ -280,13 +297,38 @@ const switchHeatAndCO2 = () => {
   });
   const co22 = document.querySelector(".co22");
   co22.addEventListener("click", () => {
-    gsap.from(heatGlobeMaterial.uniforms.uAlpha, {
-      value: 0,
-      duration: 1,
-    });
-    heatGlobeMaterial.uniforms.uPrevTextures.value =
-      loadedCO2Textures[canvasIndex];
+
     heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[canvasIndex];
+    if (canvasIndex === 0) {
+      heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[0];
+      heatGlobeMaterial.uniforms.uAlpha.value = 1;
+    } else if (canvasIndex === 1) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.3;
+    } else if (canvasIndex === 2) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.4;
+    } else if (canvasIndex === 3) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.5;
+    } else if (canvasIndex === 4) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.6;
+    } else if (canvasIndex === 5) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.7;
+    } else if (canvasIndex === 6) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.8;
+    } else if (canvasIndex === 7) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 0.9;
+    } else if (canvasIndex === 8) {
+      heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+      heatGlobeMaterial.uniforms.uAlpha.value = 1;
+    }
+
+    // heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[canvasIndex];
 
     gsap.to(".blue-bar2,.blue-bar", {
       left: "77%",
@@ -481,9 +523,9 @@ const yearsAnimation = () => {
   allYears.forEach((year, index) => {
     year.addEventListener("click", () => {
       prevIndex = globalIndex;
-      if(index === 0){
+      if (index === 0) {
         gsap.to(".main-circle", {
-          left: 0+"%",
+          left: 0 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -492,9 +534,9 @@ const yearsAnimation = () => {
             }
           },
         });
-      }else if(index === 1){
+      } else if (index === 1) {
         gsap.to(".main-circle", {
-          left: 12+"%",
+          left: 12 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -503,9 +545,9 @@ const yearsAnimation = () => {
             }
           },
         });
-      }else if(index === 2){
+      } else if (index === 2) {
         gsap.to(".main-circle", {
-          left: 24.2+"%",
+          left: 24.2 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -514,9 +556,9 @@ const yearsAnimation = () => {
             }
           },
         });
-      }else if(index === 3){
+      } else if (index === 3) {
         gsap.to(".main-circle", {
-          left: 36.5+"%",
+          left: 36.5 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -525,9 +567,9 @@ const yearsAnimation = () => {
             }
           },
         });
-      }else if(index === 4){
+      } else if (index === 4) {
         gsap.to(".main-circle", {
-          left: 48.6+"%",
+          left: 48.6 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -536,9 +578,9 @@ const yearsAnimation = () => {
             }
           },
         });
-      }else if(index === 5){
+      } else if (index === 5) {
         gsap.to(".main-circle", {
-          left: 60.4+"%",
+          left: 60.4 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -547,9 +589,9 @@ const yearsAnimation = () => {
             }
           },
         });
-      }else if(index === 6){
+      } else if (index === 6) {
         gsap.to(".main-circle", {
-          left: 72.9+"%",
+          left: 72.9 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -558,9 +600,9 @@ const yearsAnimation = () => {
             }
           },
         });
-      }else if(index === 7){
+      } else if (index === 7) {
         gsap.to(".main-circle", {
-          left: 85+"%",
+          left: 85 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -569,9 +611,9 @@ const yearsAnimation = () => {
             }
           },
         });
-      }else if(index === 8){
+      } else if (index === 8) {
         gsap.to(".main-circle", {
-          left: 96.9+"%",
+          left: 96.9 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -616,7 +658,7 @@ const canvasAnimation = () => {
 
   const mediaQuery = window.matchMedia("(max-width: 768px)");
 
-  // Function to handle changes
+  // // Function to handle changes
   function handleViewportChange(event) {
     if (event.matches) {
       // The viewport is 768px or less
@@ -629,7 +671,7 @@ const canvasAnimation = () => {
     }
   }
 
-  // Check the initial state
+  // // Check the initial state
   if (mediaQuery.matches) {
     canvas.width = page2Right.width + 750;
     canvas.height = page2Right.height + 100;
@@ -638,7 +680,7 @@ const canvasAnimation = () => {
     canvas.height = page2Right.height + 100;
   }
 
-  // Add event listener
+  // // Add event listener
   mediaQuery.addEventListener("change", handleViewportChange);
 
   window.addEventListener("resize", function () {
@@ -687,7 +729,7 @@ const canvasAnimation = () => {
   });
 
   gsap.to(".page3-line", {
-    width: "20%",
+    width: "0%",
     scrollTrigger: {
       scrub: 0.15,
       trigger: `.page3 canvas`,
@@ -792,59 +834,77 @@ const canvasAnimation = () => {
       if (imageSeq.frame < 36) {
         canvasIndex = 0;
         heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[0];
+        heatGlobeMaterial.uniforms.uAlpha.value = 1;
       } else if (imageSeq.frame < 72) {
         canvasIndex = 1;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[1];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.3;
       } else if (imageSeq.frame < 108) {
         canvasIndex = 2;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[2];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.4;
       } else if (imageSeq.frame < 144) {
         canvasIndex = 3;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[3];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.5;
       } else if (imageSeq.frame < 180) {
         canvasIndex = 4;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[4];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.6;
       } else if (imageSeq.frame < 216) {
         canvasIndex = 5;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[5];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.7;
       } else if (imageSeq.frame < 252) {
         canvasIndex = 6;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[6];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.8;
       } else if (imageSeq.frame < 288) {
         canvasIndex = 7;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[7];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.9;
       } else {
         canvasIndex = 8;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[8];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 1;
       }
     } else {
       if (imageSeq.frame < 36) {
         canvasIndex = 0;
         heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[0];
+        heatGlobeMaterial.uniforms.uAlpha.value = 1;
       } else if (imageSeq.frame < 72) {
         canvasIndex = 1;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[1];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.3;
       } else if (imageSeq.frame < 108) {
         canvasIndex = 2;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[2];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.4;
       } else if (imageSeq.frame < 144) {
         canvasIndex = 3;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[3];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.5;
       } else if (imageSeq.frame < 180) {
         canvasIndex = 4;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[4];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.6;
       } else if (imageSeq.frame < 216) {
         canvasIndex = 5;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[5];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.7;
       } else if (imageSeq.frame < 252) {
         canvasIndex = 6;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[6];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.8;
       } else if (imageSeq.frame < 288) {
         canvasIndex = 7;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[7];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 0.9;
       } else {
         canvasIndex = 8;
-        heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[8];
+        heatGlobeMaterial.uniforms.uTextures.value = heathyTexture;
+        heatGlobeMaterial.uniforms.uAlpha.value = 1;
       }
     }
   }
@@ -884,8 +944,25 @@ canvasAnimation();
 
 const page3Animation = () => {
   clutterAnimation(".page3-left-headline>h1");
+  clutterAnimation(".page3-left-headline>.p3-text2");
   const tl = gsap.timeline();
   tl.from(".page3-left-headline>h1>div", {
+    opacity: 0,
+    scale: 0,
+    y: 50,
+    stagger: {
+      amount: 1,
+    },
+    scrollTrigger: {
+      scroller: "body",
+      trigger: ".page3",
+      start: "top 0%",
+      end: "top -30%",
+      scrub: 1,
+      // markers: true,
+    },
+  });
+  tl.from(".page3-left-headline>.p3-text2>div", {
     opacity: 0,
     scale: 0,
     y: 50,
@@ -936,7 +1013,8 @@ const page3Animation = () => {
   });
 
   tl.to(".globe-model", {
-    top: "15%",
+    top: "5%",
+    zIndex: 101,
     scrollTrigger: {
       scroller: "body",
       trigger: ".page3",

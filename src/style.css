@@ -603,7 +603,7 @@ body {
 
 .page3-left {
   position: relative;
-  width: 32%;
+  width: 38%;
   height: 100%;
 }
 .page3-left-headline {
@@ -613,6 +613,7 @@ body {
 
 .page3-left-headline > h1 {
   font-family: bold;
+  text-transform: uppercase;
   font-size: 1.6vw;
 }
 
@@ -662,6 +663,7 @@ body {
   align-items: center;
   font-family: regular;
   pointer-events: none;
+  margin-top: 3vw;
 }
 
 .page3-right canvas {

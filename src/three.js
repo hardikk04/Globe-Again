@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import vertexShader from "./shaders/vertex.glsl";
 import fragmentShader from "./shaders/fragment.glsl";
 import { Draggable } from "gsap/Draggable";
+import GUI from "three/examples/jsm/libs/lil-gui.module.min.js";
 
 gsap.registerPlugin(ScrollTrigger, Draggable);
 
@@ -29,6 +30,8 @@ gsap.registerPlugin(ScrollTrigger);
 const scene = new THREE.Scene();
 const heatGlobeGroup = new THREE.Group();
 scene.add(heatGlobeGroup);
+
+const gui = new GUI();
 
 // Canvas
 const canvas = document.querySelector(".webgl");
@@ -96,10 +99,14 @@ const heatGlobeMaterial = new THREE.ShaderMaterial({
 
 const heatGlobe = new THREE.Mesh(heatGlobeGeometry, heatGlobeMaterial);
 heatGlobe.scale.set(0.8, 0.8, 0.8);
-heatGlobe.position.y = 0.4;
+// heatGlobe.position.y = 0.4;
 heatGlobe.position.x = 0;
 heatGlobeGroup.add(heatGlobe);
-heatGlobe.rotation.x = 0.85;
+heatGlobe.rotation.z = 0.5;
+
+gui.add(heatGlobe.rotation, "x").min(-30).max(30).step(0.0001);
+gui.add(heatGlobe.rotation, "y").min(-30).max(30).step(0.0001);
+gui.add(heatGlobe.rotation, "z").min(-30).max(30).step(0.0001);
 
 /**
  * Sizes
@@ -474,16 +481,106 @@ const yearsAnimation = () => {
   allYears.forEach((year, index) => {
     year.addEventListener("click", () => {
       prevIndex = globalIndex;
-      gsap.to(".main-circle", {
-        left: 12.15 * index + "%",
-        onComplete: () => {
-          if (index === 0 || index === 8) {
-            pointerBlinkWithoutCicrcle();
-          } else {
-            pointerBlinkWithCicrcle();
-          }
-        },
-      });
+      if(index === 0){
+        gsap.to(".main-circle", {
+          left: 0+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }else if(index === 1){
+        gsap.to(".main-circle", {
+          left: 12+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }else if(index === 2){
+        gsap.to(".main-circle", {
+          left: 24.2+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }else if(index === 3){
+        gsap.to(".main-circle", {
+          left: 36.5+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }else if(index === 4){
+        gsap.to(".main-circle", {
+          left: 48.6+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }else if(index === 5){
+        gsap.to(".main-circle", {
+          left: 60.4+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }else if(index === 6){
+        gsap.to(".main-circle", {
+          left: 72.9+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }else if(index === 7){
+        gsap.to(".main-circle", {
+          left: 85+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }else if(index === 8){
+        gsap.to(".main-circle", {
+          left: 96.9+"%",
+          onComplete: () => {
+            if (index === 0 || index === 8) {
+              pointerBlinkWithoutCicrcle();
+            } else {
+              pointerBlinkWithCicrcle();
+            }
+          },
+        });
+      }
       if (flag === "heat") {
         gsap.from(heatGlobeMaterial.uniforms.uAlpha, {
           value: 0,
@@ -506,7 +603,7 @@ const yearsAnimation = () => {
     });
   });
 };
-// yearsAnimation();
+yearsAnimation();
 
 let canvasIndex = 0;
 const canvasAnimation = () => {
@@ -653,28 +750,40 @@ const canvasAnimation = () => {
   tl2.to(".page3-line-point2", {
     scale: 1,
   });
-  tl2.to(".page3-right-point2>.para2-text>.f>div", {
-    opacity: 1,
-    scale: 1,
-    stagger: {
-      amount: 0.5,
+  tl2.to(
+    ".page3-right-point2>.para2-text>.f>div",
+    {
+      opacity: 1,
+      scale: 1,
+      stagger: {
+        amount: 0.5,
+      },
     },
-  },'k');
-  tl2.to(".page3-right-point2>.para2-text>.s>div", {
-    opacity: 1,
-    scale: 1,
-    stagger: {
-      amount: 0.5,
+    "k"
+  );
+  tl2.to(
+    ".page3-right-point2>.para2-text>.s>div",
+    {
+      opacity: 1,
+      scale: 1,
+      stagger: {
+        amount: 0.5,
+      },
     },
-  },'k');
+    "k"
+  );
 
-  tl2.to(".page3-right-point2>.para2-text>.j>div", {
-    opacity: 1,
-    scale: 1,
-    stagger: {
-      amount: 0.5,
+  tl2.to(
+    ".page3-right-point2>.para2-text>.j>div",
+    {
+      opacity: 1,
+      scale: 1,
+      stagger: {
+        amount: 0.5,
+      },
     },
-  },'k');
+    "k"
+  );
 
   function render() {
     scaleImage(images[imageSeq.frame], context);

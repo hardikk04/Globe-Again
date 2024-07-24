@@ -14,9 +14,12 @@ const clutterAnimation = (element) => {
   let clutter = "";
 
   // Wraps each letter in a div with a class for animation
-  htmlTag.textContent.split("").forEach((word) => {
-    clutter += `<div class="inline-block">${word}</div>`;
-  });
+  htmlTag.textContent
+    .trim()
+    .split("")
+    .forEach((word) => {
+      clutter += `<div class="inline-block">${word}</div>`;
+    });
 
   // Replaces the element's content with the animated divs
   htmlTag.innerHTML = clutter;
@@ -101,7 +104,7 @@ heatGlobe.scale.set(0.8, 0.8, 0.8);
 // heatGlobe.position.y = 0.4;
 heatGlobe.position.x = 0;
 heatGlobeGroup.add(heatGlobe);
-heatGlobe.rotation.z = 0.5;
+heatGlobe.rotation.z = 0.4;
 
 /**
  * Sizes
@@ -258,7 +261,8 @@ const switchHeatAndCO2 = () => {
 
   const heat2 = document.querySelector(".heat2");
   heat2.addEventListener("click", () => {
-    heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[canvasIndex];
+    heatGlobeMaterial.uniforms.uTextures.value =
+      loadedHeatTextures[canvasIndex];
     if (canvasIndex === 0) {
       heatGlobeMaterial.uniforms.uTextures.value = loadedHeatTextures[0];
       heatGlobeMaterial.uniforms.uAlpha.value = 1;
@@ -288,7 +292,6 @@ const switchHeatAndCO2 = () => {
       heatGlobeMaterial.uniforms.uAlpha.value = 1;
     }
 
-
     gsap.to(".blue-bar2,.blue-bar", {
       left: 0,
       width: "30%",
@@ -297,7 +300,6 @@ const switchHeatAndCO2 = () => {
   });
   const co22 = document.querySelector(".co22");
   co22.addEventListener("click", () => {
-
     heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[canvasIndex];
     if (canvasIndex === 0) {
       heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[0];
@@ -367,6 +369,9 @@ const scrubableBar = () => {
     bounds: ".bound",
     onDrag: () => {
       const bar = document.querySelector(".main-circle");
+
+      console.log(bar.style.transform);
+
       var normalizedLeft = getNormalizedLeftValue(bar, -2, 24);
       // prevIndex = globalIndex;
 
@@ -525,7 +530,8 @@ const yearsAnimation = () => {
       prevIndex = globalIndex;
       if (index === 0) {
         gsap.to(".main-circle", {
-          left: 0 + "%",
+          transform: "translate3d(1px, 0px, 0px)",
+          // left: 0 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -536,7 +542,9 @@ const yearsAnimation = () => {
         });
       } else if (index === 1) {
         gsap.to(".main-circle", {
-          left: 12 + "%",
+          transform: "translate3d(78px, 0px, 0px)",
+
+          // left: 12 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -547,7 +555,8 @@ const yearsAnimation = () => {
         });
       } else if (index === 2) {
         gsap.to(".main-circle", {
-          left: 24.2 + "%",
+          transform: "translate3d(154px, 0px, 0px)",
+          // left: 24.2 + "%",
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -558,7 +567,9 @@ const yearsAnimation = () => {
         });
       } else if (index === 3) {
         gsap.to(".main-circle", {
-          left: 36.5 + "%",
+          // left: 36.5 + "%",
+          transform: "translate3d(230px, 0px, 0px)",
+
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -569,7 +580,9 @@ const yearsAnimation = () => {
         });
       } else if (index === 4) {
         gsap.to(".main-circle", {
-          left: 48.6 + "%",
+          // left: 48.6 + "%",
+          transform: "translate3d(308px, 0px, 0px)",
+
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -580,7 +593,9 @@ const yearsAnimation = () => {
         });
       } else if (index === 5) {
         gsap.to(".main-circle", {
-          left: 60.4 + "%",
+          // left: 60.4 + "%",
+          transform: "translate3d(385px, 0px, 0px)",
+
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -591,7 +606,9 @@ const yearsAnimation = () => {
         });
       } else if (index === 6) {
         gsap.to(".main-circle", {
-          left: 72.9 + "%",
+          // left: 72.9 + "%",
+          transform: "translate3d(461px, 0px, 0px)",
+
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -602,7 +619,9 @@ const yearsAnimation = () => {
         });
       } else if (index === 7) {
         gsap.to(".main-circle", {
-          left: 85 + "%",
+          // left: 85 + "%",
+          transform: "translate3d(538px, 0px, 0px)",
+
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -613,7 +632,9 @@ const yearsAnimation = () => {
         });
       } else if (index === 8) {
         gsap.to(".main-circle", {
-          left: 96.9 + "%",
+          // left: 96.9 + "%",
+          transform: "translate3d(615px, 0px, 0px)",
+
           onComplete: () => {
             if (index === 0 || index === 8) {
               pointerBlinkWithoutCicrcle();
@@ -946,7 +967,7 @@ const page3Animation = () => {
   clutterAnimation(".page3-left-headline>h1");
   clutterAnimation(".page3-left-headline>.p3-text2");
   const tl = gsap.timeline();
-  tl.from(".page3-left-headline>h1>div", {
+  gsap.from(".page3-left-headline>h1>div", {
     opacity: 0,
     scale: 0,
     y: 50,
@@ -962,7 +983,7 @@ const page3Animation = () => {
       // markers: true,
     },
   });
-  tl.from(".page3-left-headline>.p3-text2>div", {
+  gsap.from(".page3-left-headline>.p3-text2>div", {
     opacity: 0,
     scale: 0,
     y: 50,
@@ -973,7 +994,7 @@ const page3Animation = () => {
       scroller: "body",
       trigger: ".page3",
       start: "top 0%",
-      end: "top -30%",
+      end: "top -20%",
       scrub: 1,
       // markers: true,
     },

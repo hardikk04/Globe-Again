@@ -981,8 +981,7 @@ const page3Animation = () => {
   const tl = gsap.timeline();
   gsap.from(".page3-left-headline>h1>div", {
     opacity: 0,
-    scaleY: 0,
-    y: 10,
+    y: 15,
     stagger: {
       amount: 1,
     },
@@ -997,8 +996,7 @@ const page3Animation = () => {
   });
   gsap.from(".page3-left-headline>.p3-text2>div", {
     opacity: 0,
-    scaleY: 0,
-    y: 10,
+    y: 15,
     stagger: {
       amount: 1,
     },
@@ -1019,8 +1017,7 @@ const page3Animation = () => {
     ".switch2>.heat2-switch>h1>div,.switch2>h1:nth-child(2),.co22>div,.switch-co22 small",
     {
       opacity: 0,
-      scaleY: 0,
-      y: 10,
+      y: 15,
       stagger: {
         amount: 0.5,
       },
@@ -1064,8 +1061,7 @@ const page3Animation = () => {
   clutterAnimation(".page3-right-end>h3");
   gsap.from(".page3-right-para1>h3>div,.page3-right-end>h3>div", {
     opacity: 0,
-    scaleY: 0,
-    y: 10,
+    y: 15,
     stagger: { amount: 1 },
     scrollTrigger: {
       scroller: "body",

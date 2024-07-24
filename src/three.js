@@ -234,9 +234,12 @@ const switchHeatAndCO2 = () => {
     heatGlobeMaterial.uniforms.uTextures.value =
       loadedHeatTextures[globalIndex];
 
-    gsap.to(".blue-bar,.blue-bar2", {
-      left: 0,
-      width: "30%",
+    const tl = gsap.timeline();
+    tl.to(".switch-co2-bar", {
+      width: "0",
+    });
+    tl.to(".switch-heat-bar", {
+      width: "100%",
     });
     flag = "heat";
   });
@@ -251,9 +254,12 @@ const switchHeatAndCO2 = () => {
       loadedCO2Textures[prevIndex];
     heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[globalIndex];
 
-    gsap.to(".blue-bar,.blue-bar2", {
-      left: "77%",
-      width: "25%",
+    const tl = gsap.timeline();
+    tl.to(".switch-heat-bar", {
+      width: "0%",
+    });
+    tl.to(".switch-co2-bar", {
+      width: "100%",
     });
 
     flag = "co2";
@@ -292,9 +298,12 @@ const switchHeatAndCO2 = () => {
       heatGlobeMaterial.uniforms.uAlpha.value = 1;
     }
 
-    gsap.to(".blue-bar2,.blue-bar", {
-      left: 0,
-      width: "30%",
+    const tl = gsap.timeline();
+    tl.to(".switch-co2-bar2", {
+      width: "0",
+    });
+    tl.to(".switch-heat-bar2", {
+      width: "100%",
     });
     flag = "heat";
   });
@@ -332,9 +341,12 @@ const switchHeatAndCO2 = () => {
 
     // heatGlobeMaterial.uniforms.uTextures.value = loadedCO2Textures[canvasIndex];
 
-    gsap.to(".blue-bar2,.blue-bar", {
-      left: "77%",
-      width: "25%",
+    const tl = gsap.timeline();
+    tl.to(".switch-heat-bar2", {
+      width: "0%",
+    });
+    tl.to(".switch-co2-bar2", {
+      width: "100%",
     });
     flag = "co2";
   });
@@ -969,8 +981,8 @@ const page3Animation = () => {
   const tl = gsap.timeline();
   gsap.from(".page3-left-headline>h1>div", {
     opacity: 0,
-    scale: 0,
-    y: 50,
+    scaleY: 0,
+    y: 10,
     stagger: {
       amount: 1,
     },
@@ -985,8 +997,8 @@ const page3Animation = () => {
   });
   gsap.from(".page3-left-headline>.p3-text2>div", {
     opacity: 0,
-    scale: 0,
-    y: 50,
+    scaleY: 0,
+    y: 10,
     stagger: {
       amount: 1,
     },
@@ -1004,10 +1016,11 @@ const page3Animation = () => {
   clutterAnimation(".co22");
 
   tl.from(
-    ".switch2>h1>div,.switch2>h1:nth-child(2),.co22>div,.switch-co22 small",
+    ".switch2>.heat2-switch>h1>div,.switch2>h1:nth-child(2),.co22>div,.switch-co22 small",
     {
       opacity: 0,
-      y: 30,
+      scaleY: 0,
+      y: 10,
       stagger: {
         amount: 0.5,
       },
@@ -1021,8 +1034,8 @@ const page3Animation = () => {
       },
     }
   );
-  tl.from(".blue-bar2", {
-    transform: "scaleX(0)",
+  tl.from(".switch-heat-bar2", {
+    width: "0",
     scrollTrigger: {
       scroller: "body",
       trigger: ".page3",
@@ -1032,6 +1045,8 @@ const page3Animation = () => {
       // markers: true,
     },
   });
+
+ 
 
   tl.to(".globe-model", {
     top: "5%",
@@ -1049,7 +1064,8 @@ const page3Animation = () => {
   clutterAnimation(".page3-right-end>h3");
   gsap.from(".page3-right-para1>h3>div,.page3-right-end>h3>div", {
     opacity: 0,
-    scale: 0,
+    scaleY: 0,
+    y: 10,
     stagger: { amount: 1 },
     scrollTrigger: {
       scroller: "body",

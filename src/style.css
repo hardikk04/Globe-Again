@@ -256,12 +256,34 @@ body {
   position: relative;
   font-family: medium;
   margin-top: 8vw;
+  display: flex;
+  gap: 0.4vw;
+  overflow: hidden;
 }
 
-.scrub > h3 {
+.scrub > div > h3 {
   opacity: 0;
   font-size: 0.6vw;
   letter-spacing: 2px;
+}
+
+.scrub-line {
+  position: relative;
+  width: 2px;
+  height: 00%;
+  border-radius: 1vw;
+  background-color: rgba(0, 0, 0, 0.344);
+}
+
+.ani-line {
+  position: absolute;
+  height: 50%;
+  width: 6px;
+  left: 50%;
+  top: 0%;
+  transform: translate(-50%, -50%);
+  border-radius: 1vw;
+  background-color: orange;
 }
 
 .interval {
@@ -415,11 +437,19 @@ body {
   overflow: hidden;
 }
 
+.switch-heat-bar {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background-color: rgb(10, 150, 244);
+}
+
 .switch h1:nth-child(odd) {
   cursor: pointer;
 }
 
 .switch-co2 {
+  position: relative;
   display: flex;
   align-items: end;
 }
@@ -430,7 +460,16 @@ body {
   font-weight: 500;
 }
 
+.switch-co2-bar {
+  position: absolute;
+  top: 100%;
+  height: 2px;
+  width: 0%;
+  background-color: rgb(10, 150, 244);
+}
+
 .switch-co22 {
+  position: relative;
   display: flex;
   align-items: end;
 }
@@ -439,18 +478,6 @@ body {
   font-family: medium;
   font-size: 1vw;
   font-weight: 500;
-}
-
-.blue-bar {
-  position: absolute;
-  height: 2px;
-  width: 28%;
-  background-color: rgb(10, 150, 244);
-  left: 0;
-  bottom: -15%;
-  -webkit-transform-origin: top left;
-  -ms-transform-origin: top left;
-  transform-origin: top left;
 }
 
 .globe-model {
@@ -629,23 +656,27 @@ body {
   width: -moz-fit-content;
   width: fit-content;
   pointer-events: all;
+  white-space: nowrap;
   font-size: 0.6vw;
+}
+
+.switch-heat-bar2 {
+  position: relative;
+  height: 2px;
+  width: 100%;
+  background-color: rgb(10, 150, 244);
+}
+
+.switch-co2-bar2 {
+  position: absolute;
+  top: 100%;
+  height: 2px;
+  width: 0%;
+  background-color: rgb(10, 150, 244);
 }
 
 .switch2 h1:nth-child(odd) {
   cursor: pointer;
-}
-
-.blue-bar2 {
-  position: absolute;
-  height: 2px;
-  width: 30%;
-  background-color: rgb(10, 150, 244);
-  left: 0;
-  bottom: -15%;
-  -webkit-transform-origin: top left;
-  -ms-transform-origin: top left;
-  transform-origin: top left;
 }
 
 .page3-right {

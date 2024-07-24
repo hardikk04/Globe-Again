@@ -657,7 +657,7 @@ const page2Animation = () => {
   );
 
   page2Tl.from(
-    ".blue-bar",
+    ".switch-heat-bar",
     {
       width: "0",
     },
@@ -710,17 +710,24 @@ const page2Animation = () => {
       from: "x",
     },
     onComplete: () => {
-      gsap.to(".scrub > h3", {
+      gsap.to(".scrub > div>h3", {
         opacity: 1,
         stagger: 0.1,
+      });
+      gsap.to(".scrub-line", {
+        height: "100%",
       });
     },
   });
 
   document.querySelector(".main-circle").addEventListener("mousedown", () => {
-    gsap.to(".scrub > h3", {
+    gsap.to(".scrub >div > h3", {
       opacity: 0,
       stagger: -0.1,
+    });
+
+    gsap.to(".scrub-line", {
+      height: "0%",
     });
   });
 
@@ -932,7 +939,11 @@ const page2Animation = () => {
     "to"
   );
 
-  page2Tl.to(".scrub > h3", {
+  page2Tl.to(".scrub-line", {
+    height: "0%",
+  });
+
+  page2Tl.to(".scrub >div> h3", {
     opacity: 0,
     stagger: -0.1,
   });
@@ -977,7 +988,15 @@ const page2Animation = () => {
   );
 
   page2Tl.to(
-    ".blue-bar",
+    ".switch-heat-bar",
+    {
+      width: "0",
+    },
+    "blue-line-to"
+  );
+
+  page2Tl.to(
+    ".switch-co2-bar",
     {
       width: "0",
     },
@@ -1020,105 +1039,23 @@ const page2Animation = () => {
     left: "20%",
     duration: 8,
   });
-};
-page2Animation();
 
-const fn = () => {
-  let lastScrollTop = 0;
-  let index = 0;
-  let flag = true;
-  let flag2 = true;
-
-  window.addEventListener("scroll", function (event) {
-    let currentScrollTop =
-      window.pageYOffset || document.documentElement.scrollTop;
-
-    // event.preventDefault();
-
-    if (currentScrollTop > lastScrollTop) {
-      if (index === 0) {
-        if (currentScrollTop > 20) {
-          if (flag) {
-            gsap.to(window, { duration: 5, scrollTo: 760 });
-            flag = false;
-            index = 99;
-            setTimeout(() => {
-              index = 1;
-              flag = true;
-            }, 5000);
-          }
-        }
-      } else if (index === 1) {
-        if (currentScrollTop > 760) {
-          if (flag) {
-            gsap.to(window, { duration: 5, scrollTo: 1650 });
-            index = 99;
-            setTimeout(() => {
-              index = 2;
-              flag = true;
-            }, 5000);
-          }
-        }
-      } else if (index === 2) {
-        if (currentScrollTop > 1690)
-          if (flag) {
-            gsap.to(window, { duration: 5, scrollTo: 4346 });
-            index = 99;
-            setTimeout(() => {
-              index = 3;
-              flag = true;
-            }, 5000);
-          }
-      } else if (index === 3) {
-        if (currentScrollTop > 4372) {
-          if (flag) {
-            gsap.to(window, {
-              duration: 8,
-              scrollTo:
-                document.documentElement.scrollHeight - window.innerHeight,
-            });
-            index = 99;
-            setTimeout(() => {
-              index = 3;
-              flag = true;
-            }, 8000);
-          }
-        }
-      }
-    } else {
-      if (index === 0) {
-        index = 99;
-        setTimeout(() => {
-          index = 0;
-        }, 5000);
-        gsap.to(window, { duration: 5, scrollTo: 0 });
-      } else if (index === 1) {
-        index = 99;
-        setTimeout(() => {
-          index = 0;
-        }, 5000);
-        gsap.to(window, { duration: 5, scrollTo: 760 });
-      } else if (index === 2) {
-        index = 99;
-        setTimeout(() => {
-          index = 1;
-        }, 5000);
-        gsap.to(window, { duration: 5, scrollTo: 1650 });
-      } else if (index === 3) {
-        console.log(currentScrollTop);
-        index = 99;
-        setTimeout(() => {
-          index = 2;
-          console.log(index);
-        }, 5000);
-        gsap.to(window, {
-          duration: 5,
-          scrollTo: 4346,
-        });
-      }
-    }
-
-    lastScrollTop = currentScrollTop;
+  const tl = gsap.timeline({ repeat: -1 });
+  tl.to(".ani-line", {
+    top: "125%",
+    duration: 1,
+  });
+  tl.to(".ani-line", {
+    opacity: 0,
+    duration: 0.5,
+  });
+  tl.to(".ani-line", {
+    top: "-25%",
+    duration: 1,
+  });
+  tl.to(".ani-line", {
+    opacity: 1,
+    duration: 0.5,
   });
 };
-// fn();
+page2Animation();

@@ -79,8 +79,9 @@ const page1Animation = () => {
   page1Tl.from(
     ".page1-main-line1>h1>div",
     {
-      y: 15,
+      y: 30,
       opacity: 0,
+      ease: "power3.in",
       stagger: {
         amount: 1,
       },
@@ -94,9 +95,9 @@ const page1Animation = () => {
   page1Tl.from(
     ".page1-main-line2>h1>div",
     {
-      y: 15,
-
       opacity: 0,
+      y: 30,
+      ease: "power3.in",
       stagger: {
         amount: 1,
       },
@@ -104,7 +105,6 @@ const page1Animation = () => {
         gsap.to(window, { duration: 3, scrollTo: 820 });
       },
     },
-
     "main"
   );
 };
@@ -414,7 +414,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".page2-heading-line1>h1>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: 3.5,
       stagger: {
@@ -427,7 +428,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".page2-heading-line2>h1>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: 3.5,
       stagger: {
@@ -441,8 +443,8 @@ const page2Animation = () => {
     ".page2-heading-line3>h1>div",
     {
       opacity: 0,
-
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       delay: 3.5,
       stagger: {
         amount: 1,
@@ -494,7 +496,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2024>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -1,
       stagger: {
@@ -508,7 +511,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2030>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.9,
       stagger: {
@@ -522,7 +526,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2040>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.8,
       stagger: {
@@ -536,7 +541,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2050>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.7,
       stagger: {
@@ -550,7 +556,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2060>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.6,
       stagger: {
@@ -564,7 +571,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2070>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.5,
       stagger: {
@@ -578,7 +586,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2080>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.4,
       stagger: {
@@ -592,7 +601,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2090>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.3,
       stagger: {
@@ -606,7 +616,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".y2100>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.2,
       stagger: {
@@ -623,7 +634,8 @@ const page2Animation = () => {
   page2Tl.from(
     ".switch-heat>h1>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       stagger: {
         amount: 0.5,
@@ -647,7 +659,8 @@ const page2Animation = () => {
   });
 
   page2Tl.from(".switch-co2>h1>div", {
-    y: 15,
+    y: 30,
+    ease: "power3.in",
     opacity: 0,
     stagger: {
       amount: 0.5,
@@ -656,14 +669,16 @@ const page2Animation = () => {
   });
 
   page2Tl.from(".switch-co2>small", {
-    y: 15,
+    y: 30,
+    ease: "power3.in",
     opacity: 0,
   });
 
   clutterAnimation(".legend-text>h3");
 
   page2Tl.from(".legend-text>h3>div", {
-    y: 15,
+    y: 30,
+    ease: "power3.in",
     opacity: 0,
     stagger: {
       amount: 0.5,
@@ -676,7 +691,8 @@ const page2Animation = () => {
   });
 
   page2Tl.from(".value h3", {
-    x: 10,
+    x: 15,
+    ease: "power3.in",
     opacity: 0,
     stagger: {
       amount: 0.5,
@@ -713,8 +729,8 @@ const page2Animation = () => {
     ".page2-heading-line1>h1>div",
     {
       opacity: 0,
-
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       stagger: {
         amount: -1,
         from: "x",
@@ -726,8 +742,8 @@ const page2Animation = () => {
     ".page2-heading-line2>h1>div",
     {
       opacity: 0,
-
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       stagger: {
         amount: -1,
         from: "x",
@@ -739,8 +755,8 @@ const page2Animation = () => {
     ".page2-heading-line3>h1>div",
     {
       opacity: 0,
-
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       stagger: {
         amount: -1,
         from: "x",
@@ -781,7 +797,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2100>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -1,
       stagger: {
@@ -795,7 +812,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2090>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.9,
       stagger: {
@@ -809,7 +827,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2080>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.8,
       stagger: {
@@ -823,7 +842,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2070>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.7,
       stagger: {
@@ -837,7 +857,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2060>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.6,
       stagger: {
@@ -851,7 +872,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2050>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.5,
       stagger: {
@@ -865,7 +887,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2040>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.4,
       stagger: {
@@ -878,7 +901,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2030>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.3,
       stagger: {
@@ -892,7 +916,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".y2024>h3>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       delay: -0.2,
       stagger: {
@@ -913,7 +938,8 @@ const page2Animation = () => {
   });
 
   page2Tl.to(".switch-co2>small", {
-    y: 15,
+    y: 30,
+    ease: "power3.in",
     opacity: 0,
     stagger: {
       amount: -0.5,
@@ -922,7 +948,8 @@ const page2Animation = () => {
   });
 
   page2Tl.to(".switch-co2>h1>div", {
-    y: 15,
+    y: 30,
+    ease: "power3.in",
     opacity: 0,
     stagger: {
       amount: -0.5,
@@ -938,7 +965,8 @@ const page2Animation = () => {
   page2Tl.to(
     ".switch-heat>h1>div",
     {
-      y: 15,
+      y: 30,
+      ease: "power3.in",
       opacity: 0,
       stagger: {
         amount: -0.5,
@@ -965,7 +993,8 @@ const page2Animation = () => {
   );
 
   page2Tl.to(".legend-text>h3>div", {
-    y: 15,
+    y: 30,
+    ease: "power3.in",
     opacity: 0,
     stagger: {
       amount: -0.5,
@@ -978,7 +1007,8 @@ const page2Animation = () => {
   });
 
   page2Tl.to(".value h3", {
-    x: 10,
+    x: 15,
+    ease: "power3.in",
     opacity: 0,
     stagger: {
       amount: -0.5,
